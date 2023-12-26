@@ -51,11 +51,12 @@ const game = () => {
 }
 
 const btnOpciones = document.querySelectorAll('.btn');
+const divResultado = document.querySelector('#resultado');
 
 btnOpciones.forEach( (btn) => {
     btn.addEventListener('click' , (e) => { 
-        console.log(playRound(btn.textContent,getComputerChoice()));
-     })
+        divResultado.textContent = playRound(btn.textContent,getComputerChoice());
+    })  
 })
 
 
