@@ -2,7 +2,7 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-const listaOpciones = ["PIEDRA" , "PAPEL" , "TIJERAS"];
+const listaOpciones = ["PIEDRA" , "PAPEL" , "TIJERA"];
 
 const getComputerChoice = () => {
     return listaOpciones[getRandomInt(3)];
@@ -16,7 +16,7 @@ const playRound = (playerSelection , computerSelection) => {
         (selectionPla == listaOpciones[2] && computerSelection == listaOpciones[1]) ){
             return "You win, " + selectionPla + " wins against " + computerSelection;
     }else if (selectionPla == computerSelection) {
-        return "Empate, " + selectionPla + "empata contra " + computerSelection;
+        return "Empate, " + selectionPla + " empata contra " + computerSelection;
     } else {
         return "You lose, " + selectionPla + " loses against " + computerSelection;
     }
@@ -33,7 +33,7 @@ const game = () => {
     
     for (let i = 0; i < 5 ; i++) {
 
-        opcionJugador = prompt("Ingresa la Mano que desea jugar; piedra, papel o tijeras",null);
+        opcionJugador = prompt("Ingresa la Mano que desea jugar; piedra, papel o tijera",null);
 
         resultadoRonda = playRound(opcionJugador,getComputerChoice());
 
@@ -50,7 +50,12 @@ const game = () => {
     console.log(mensajeVictoriaFinal);
 }
 
+const btnOpciones = document.querySelectorAll('.btn');
 
-console.log(game());
+btnOpciones.forEach( (btn) => {
+    btn.addEventListener('click' , (e) => { 
+        console.log(playRound(btn.textContent,getComputerChoice()));
+     })
+})
 
 
