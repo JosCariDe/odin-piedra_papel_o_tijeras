@@ -50,13 +50,40 @@ const game = () => {
     console.log(mensajeVictoriaFinal);
 }
 
+    let puntosJugador = 0;
+    let puntosMaquina = 0;
+
+    let resultadoRonda;
+
 const btnOpciones = document.querySelectorAll('.btn');
 const divResultado = document.querySelector('#resultado');
 
+
 btnOpciones.forEach( (btn) => {
     btn.addEventListener('click' , (e) => { 
-        divResultado.textContent = playRound(btn.textContent,getComputerChoice());
+        resultadoRonda = playRound(btn.textContent,getComputerChoice());
+        divResultado.textContent = resultadoRonda;
+        contadorPuntaje(resultadoRonda);
     })  
 })
+
+const jugadorProgreso = document.querySelector('#jugador-progreso');
+const maquinaProgreso = document.querySelector('#maquina-progreso');
+
+const contadorPuntaje = (resultadoRonda) => {
+
+    if(resultadoRonda[4] == 'w') {
+        puntosJugador++;
+        jugadorProgreso.textContent = puntosJugador;
+    } else if(resultadoRonda[4] == 'l') {
+        puntosMaquina++;
+        maquinaProgreso.textContent = puntosMaquina;
+    }
+
+    if(puntosJugador == 5 ) alert('El jugador ya consiguió 5 puntos y la maquina ' + puntosMaquina);
+    if(puntosMaquina == 5 ) alert('La Maquina ya consiguió 5 puntos y el jugador ' + puntosJugador);
+}
+
+
 
 

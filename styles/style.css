@@ -9,6 +9,29 @@
     gap: 10px;
 }
 
+.container.puntuaciones {
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+div.container.puntuaciones p {
+    font-size: 55px;
+}
+
+.container-pm {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    overflow: auto;
+    gap: -50px;
+    justify-content: center;
+    align-items: center;
+}
+
+h2, p{
+    margin: 0;
+}
+
 .btn {
     font-size: medium;
 }
